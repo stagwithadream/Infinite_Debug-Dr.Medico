@@ -1,0 +1,8 @@
+{
+  "name": "DrMed",
+  "description": "Hackabit Project",
+  "repository": "https://github.com/hackabit18/Infinite_Debug/tree/server",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
