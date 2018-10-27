@@ -206,6 +206,94 @@ app.post('/getdisease',function(req,res){
   }
 });
 
+app.post('/givereward',function(req,res){
+  var email= req.body.email;
+  var query=`query{
+  	rewards(where:{
+      email:{
+        _like:"${email}"
+      }
+    }){
+      reward_points
+    }
+  }`
+  var selectOptions = {
+  url: "https://infinitedebug.herokuapp.com/v1alpha1/graphql",
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Hasura-Access-Key': 'coolhack'
+  },
+  body: JSON.stringify({
+      query
+  })
+}
+request(selectOptions, function(error, response, body) {
+  if (error) {
+      console.log('Error from select request: ');
+      console.log(error)
+      res.status(500).json({
+        'error': error,
+        'message': 'Select request failed'
+      });
+  }
+  var name = req.body.name;
+  var points = req.body.amount/100;
+  var resy = JSON.parse(body);
+  var resM = resy.data.rewards;
+  if(resM.length===0){
+
+  }
+  else{
+    points = resM.data.rewards[0].reward_points + points;
+  }
+    var queryI=`mutation insert_rewards {
+                insert_rewards(
+                  objects: [
+                    {
+                      name: "${Name}",
+                      email: "${email}",
+                      reward_points: "${points}"
+                    }
+                  ]
+                ) {
+                  returning {
+                    id
+                    reward_points
+                  }
+                }
+              }`
+    var seOptions = {
+    url: "https://infinitedebug.herokuapp.com/v1alpha1/graphql",
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Hasura-Access-Key': 'coolhack'
+    },
+    body: JSON.stringify({
+        queryI
+    })
+  }
+  request(seOptions, function(er, resp, body) {
+    if (error) {
+        console.log('Error from select request: ');
+        console.log(error)
+        res.status(500).json({
+          'error': error,
+          'message': 'Select request failed'
+        });
+    }
+
+
+    var rest = {
+      "reward_points":""+points,
+    }
+    return res.json(rest);
+
+    })
+
+  })
+})
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
