@@ -207,6 +207,7 @@ app.post('/getdisease',function(req,res){
 });
 
 app.post('/givereward',function(req,res){
+  console.log(req);
   var email= req.body.email;
   var query=`query{
   	rewards(where:{
@@ -237,32 +238,34 @@ request(selectOptions, function(error, response, body) {
         'message': 'Select request failed'
       });
   }
+
   var name = req.body.name;
   var points = req.body.amount/100;
   var resy = JSON.parse(body);
   var resM = resy.data.rewards;
   if(resM.length===0){
-
+    console.log("Not present");
   }
   else{
     points = resM.data.rewards[0].reward_points + points;
   }
-    var queryI=`mutation insert_rewards {
-                insert_rewards(
-                  objects: [
-                    {
-                      name: "${Name}",
-                      email: "${email}",
-                      reward_points: "${points}"
-                    }
-                  ]
-                ) {
-                  returning {
-                    id
-                    reward_points
-                  }
-                }
-              }`
+  console.log("Got till here");
+ query=`mutation insert_rewards{
+insert_rewards(
+objects: [
+{
+name: "${name}",
+email: "${email}",
+reward_points: "${points}"
+}
+]
+) {
+returning {
+id
+reward_points
+}
+}
+}`
     var seOptions = {
     url: "https://infinitedebug.herokuapp.com/v1alpha1/graphql",
     method: 'POST',
@@ -271,7 +274,7 @@ request(selectOptions, function(error, response, body) {
       'X-Hasura-Access-Key': 'coolhack'
     },
     body: JSON.stringify({
-        queryI
+        query
     })
   }
   request(seOptions, function(er, resp, body) {
