@@ -69,11 +69,8 @@ input[type=submit]:hover {
     <label for="lname">Loan number</label>
     <input type="text" id="loanNumber" name="loanNumber" placeholder="Loan number..">
 
-    <label for="lname">Reward points</label>
-    <input type="text" id="reward" name="reward" placeholder="Your email..">
 
-
-    <input type="submit" value="Submit">
+    <input type="button" value="Submit" onclick="return sbmtbtn();">
   </form>
 </div></p>
 						</header>
@@ -122,6 +119,30 @@ input[type=submit]:hover {
 				if ('addEventListener' in window) {
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+
+				function sbmtbtn()
+				{
+					var name = document.getElementById('name');
+					var email = document.getElementById('email');
+					var amount = document.getElementById('amount');
+					var loanNumber = document.getElementById('loanNumber');
+				const xhr = new XMLHttpRequest;
+				const url = "https://dr-med.herokuapp.com/givereward";
+				const data = JSON.stringify({
+					name: name.value,
+					email: email.value,
+					amount: amount.value,
+					loanNumber: loanNumber.value
+				});
+				xhr.responseType = 'json';
+				xhr.onreadystatechange = () => {
+				  if(xhr.readyState === XMLHttpRequest.DONE) {
+				    return xhr.response;
+				  }
+				}
+				xhr.open('POST', url);
+				xhr.send(data);
 				}
 			</script>
 
