@@ -20,6 +20,11 @@ var apiRouters = require('./apiRouters');
 
 app.use(express.static(__dirname + '/public'));
 
+app.post('/getdisease',function(req,res){
+  console.log(req.body);
+  res.end("yes");
+});
+
 app.use('/api', apiRouters);
 
 app.listen(port, function() {
