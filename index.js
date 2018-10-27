@@ -54,7 +54,19 @@ request(selectOptions, function(error, response, body) {
   }
   console.log(body);
   var resy = JSON.parse(body);
-    res.send(resy.data.symptom[0].remedies);
+  var resM = resy.data.symptom[0].remedies;
+  var response = {
+    "fulfillmentMessages": [
+      {
+        "text": [
+            ""+resM
+          ]
+      }
+    ],
+    "source": "https://dr-med.herokuapp.com/"
+  }
+  return res.json(response);
+
   })
 })
 app.post('/getdisease',function(req,res){
@@ -93,7 +105,19 @@ app.post('/getdisease',function(req,res){
     }
     console.log(body);
     var resy = JSON.parse(body);
-      res.send(resy.data.symptom[0].remedies);
+    var resM = resy.data.symptom[0].remedies;
+    var response = {
+      "fulfillmentMessages": [
+        {
+          "text": [
+              ""+resM
+            ]
+        }
+      ],
+      "source": "https://dr-med.herokuapp.com/"
+    }
+    return res.json(response);
+
     })
   }
 });
