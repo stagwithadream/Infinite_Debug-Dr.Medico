@@ -18,6 +18,16 @@
 	</script>
 	<!-- //Meta tag Keywords -->
 
+
+	<style>
+		div.fixed {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: 3px solid #73AD21;
+		}
+	</style>
+
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
@@ -37,7 +47,18 @@
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
 	 rel="stylesheet">
 	<!-- //web fonts -->
-
+	<style>#chat {
+		display: table;
+		height: 200px;
+		width: 200px;
+		border: 1px solid #000;
+	}
+	
+	.chatMessage {
+		display: table-cell;
+		vertical-align: bottom;
+	}
+	</style>
 </head>
 
 <body>
@@ -75,6 +96,13 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Chat Window-->
+	<div class="fixed">
+		<iframe allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/6f35217a-57a6-43c4-8f42-eb6ce3e2fb4e">
+		</iframe>
+	</div>
+
 
 	<!-- Button trigger modal(select-location) -->
 	<div id="small-dialog1" class="mfp-hide">
@@ -593,6 +621,7 @@
 							</div>
 						</div>
 						<!-- //first section -->
+
 						<!-- second section -->
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
 							<h3 class="heading-tittle text-center font-italic">Essentials</h3>
@@ -1036,45 +1065,31 @@
 	<div class="join-w3l1 py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="join-agile text-left p-4">
 						<div class="row">
 							<div class="col-sm-7 offer-name">
-								<h6>Smooth, Rich & Loud Audio</h6>
-								<h4 class="mt-2 mb-3">Branded Headphones</h4>
-								<p>Sale up to 25% off all in store</p>
+								<h6>Official Partnering.</h6>
+								<h4 class="mt-2 mb-3">Get rewarded for paying debts through us</h4>
+								<p></p>
 							</div>
 							<div class="col-sm-5 offerimg-w3l">
-								<img src="images/off1.png" alt="" class="img-fluid">
+								<img src="images/off1.png" style="Align:Center;" alt="" class="img-fluid">
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 mt-lg-0 mt-5">
-					<div class="join-agile text-left p-4">
-						<div class="row ">
-							<div class="col-sm-7 offer-name">
-								<h6>A Bigger Phone</h6>
-								<h4 class="mt-2 mb-3">Smart Phones 5</h4>
-								<p>Free shipping order over $100</p>
-							</div>
-							<div class="col-sm-5 offerimg-w3l">
-								<img src="images/off2.png" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</div>
 	<!-- middle section -->
 
 
-
 	<!-- copyright -->
 	<div class="copy-right py-3">
 		<div class="container">
-			<p class="text-center text-white">© 2018 Electro Store. All rights reserved | Design by Infinite_Debug.
+			<p class="text-center text-white">© 2018 Dr.Med Store. All rights reserved | Design by Infinite_Debug.
 
 			</p>
 		</div>
