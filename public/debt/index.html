@@ -127,22 +127,35 @@ input[type=submit]:hover {
 					var email = document.getElementById('email');
 					var amount = document.getElementById('amount');
 					var loanNumber = document.getElementById('loanNumber');
-				const xhr = new XMLHttpRequest;
-				const url = "https://dr-med.herokuapp.com/givereward";
+				//const xhr = new XMLHttpRequest;
+				//const url = "https://dr-med.herokuapp.com/givereward";
 				const data = JSON.stringify({
 					name: name.value,
 					email: email.value,
 					amount: amount.value,
 					loanNumber: loanNumber.value
 				});
-				xhr.responseType = 'json';
+				/*xhr.responseType = 'json';
 				xhr.onreadystatechange = () => {
 				  if(xhr.readyState === XMLHttpRequest.DONE) {
 				    return xhr.response;
 				  }
 				}
 				xhr.open('POST', url);
-				xhr.send(data);
+				xhr.send(data);*/
+				fetch("https://dr-med.herokuapp.com/givereward", {
+					  method: 'POST',
+					  body: JSON.stringify(data)
+					}).then(response => {
+					  if(response.ok) {
+					    return response.json();
+					  }
+					  throw new Error('Request failed!');
+					}, networkError => {
+					  console.log(networkError.message);
+					}).then(jsonResponse => {
+					  return jsonResponse;
+					});
 				}
 			</script>
 
