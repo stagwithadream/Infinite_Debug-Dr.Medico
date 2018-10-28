@@ -5,7 +5,7 @@ Also we have these products listed on our website so that the user can easily bu
 It can also directly talk to the user using its voice simulation while being used with Google Home/Assistant or Amazon alexa.
 
 ## Live demo
-Our product is hosted on a live tech domain feel free to give us a visit at [www.infinitedebug.tech](www.infinitedebug.tech)
+Our product is hosted on a live tech domain feel free to give us a visit at [www.infinitedebug.tech](http://www.infinitedebug.tech)
 
 ## Technology Used
 We are using **Hasura GraphQL Engine** as our database service, which reduces the number of database calls significantly by allowing multiple sub-queries.
