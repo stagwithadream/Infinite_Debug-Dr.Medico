@@ -38,7 +38,7 @@ $ git push heroku master
 
 You may then just run `heroku open` to open the page directly.
 ## Found a bug?
-Feel free to open an issue or drop me a mail at divyanshukumarg@gmail.com
+Feel free to open an issue or drop me a mail at sairamreddy4299@gmail.com
 
 ## License
 All of the code is fully open source, so you can go ahead and try to integrate with your project too.
